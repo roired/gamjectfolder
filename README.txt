@@ -5,6 +5,9 @@ Gamjectfolder
 This is a simple Python app that creates a folder strutcture as well as a default empty README.txt file for a Game Project.
 
 Its goal is to standarize the process of starting a new Game Project by providing default folders and subfolders as well.
+For now, to launch the app you should use "python application.py" command in the terminal.
+
+It will be released as a .deb or flatpak, not sure yet
 
 The MAIN folder is named with the creation date in ISO format followed by the name the user picks, then the structure follows:
 
