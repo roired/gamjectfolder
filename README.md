@@ -8,28 +8,30 @@ Its goal is to standarize the process of starting a new Game Project by providin
 
 The MAIN folder is named with the creation date in ISO format followed by the name the user picks, then the structure follows:
 
-  YYYYMMDD-Name
-  |---Name-AuxFiles
-  |     |---AuxFONTS
-  |     |---AuxIMAGES
-  |     |---AuxMODELS
-  |     |---AuxPACKAGES
-  |     |---AuxSOUNDS
-  |     |---AuxTRANSLATIONS
-  |---Name-BackUPs
-  |---Name-Builds
-  |     |---Alpha
-  |     |---Beta
-  |     |---ReleaseCandidate
-  |     |---README.txt
-  |---Name-Marketing
-  |     |---MktLOGOS
-  |     |---MktPRESS_KIT
-  |     |---MktSCREENSHOTS
-  |     |---MktVIDEOS
-  |---Name-PROJECT
-        |---Proj-FINAL
-        |---Proj-WIP
+ * YYYYMMDD-Name
+    * Name-AuxFiles
+      * AuxFONTS
+      * AuxIMAGES
+      * AuxMODELS
+      * AuxPACKAGES
+      * AuxSOUNDS
+      * AuxTRANSLATIONS
+    * Name-BackUPs
+    * Name-Builds
+      * Alpha
+      * Beta
+      * ReleaseCandidate
+      * README.txt
+    * Name-Marketing
+      * MktLOGOS
+      * MktPRESS_KIT
+      * MktSCREENSHOTS
+      * MktVIDEOS
+    * Name-PROJECT
+      * Proj-FINAL
+      * Proj-WIP
         
-        
-# TODO: https://gitlab.gnome.org/GNOME/gnome-sound-recorder/blob/master/data/meson.build
+It is also distributed as a flatpak file. Using the flatpak file to be installed through the Software Center. It needs to enter the password twice as this flatpak is not signed with any repo (at least just yet).
+
+While being a flatpak sandboxed app, in order to create the folder structure it has access to the filesystem (--filesystem=host).
+
