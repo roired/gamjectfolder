@@ -1,0 +1,7 @@
+data/org.gnome.Gamjectfolder.desktop.in
+data/org.gnome.Gamjectfolder.appdata.xml.in
+data/org.gnome.Gamjectfolder.gschema.xml
+src/window.ui
+src/main.py
+src/window.py
+

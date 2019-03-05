@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=0.1
+Encoding=UTF-8
+Name=Gamjectfolder
+Comment=Simple app to create a Game Project folder skeleton
+Exec=gamjectfolder
+Icon=org.gnome.Gamjectfolder
+Terminal=false
+Type=Application
+Categories=GTK;Utility;Development;
+Keywords=Game;Project;Folder;
+StartupNotify=true

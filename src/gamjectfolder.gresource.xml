@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/Gamjectfolder">
+    <file>gjfGUI.glade</file>
+    <file>../data/icons/hicolor/Gamjectfolder.svg</file>
+    <file>../data/icons/hicolor/scalable/apps/org.gnome.Gamjectfolder.svg</file>
+  </gresource>
+</gresources>   
