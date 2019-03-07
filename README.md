@@ -35,3 +35,10 @@ It is also distributed as a flatpak file. Using the flatpak file to be installed
 
 While being a flatpak sandboxed app, in order to create the folder structure it has access to the filesystem (--filesystem=host).
 
+
+TODO: 
+   - Add a "estimated end date"
+   - Add a checkbox to "create project tracker" (needs Gamplan project finished)
+   - Improve Icon to match "papirus" icon theme
+   - Remove all "print" debugs
+   - ¿Connect with Gnome Calendar and ADD start/end dates? need to study this
