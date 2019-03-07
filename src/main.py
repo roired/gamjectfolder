@@ -154,17 +154,10 @@ class MyApplication:
     def __init__(self):
         # initialize the app class. Gets the builder and Glade file to parse it along with the signals
         builder = Gtk.Builder()
-        # builder.add_from_file("gjfGUI.glade")
-        # commented as Gnome Builder does not like this 
         # need to do as in the following lines in order to get the
         # right path to the Glade file
         filename = "/org/gnome/Gamjectfolder/gjfGUI.glade"
-        # dirname = os.path.dirname(__file__)
-        # filename = os.path.join(dirname, 'gjfGUI.glade')
-        # filename = "gjfGUI.glade"
-        #filename = "/org/gnome/Gamjectfolder/gjfGUI.glade"
-        # builder.add_from_file(filename)
-        
+
         # finally looks like this one is the right one
         builder.add_from_resource(filename)
         builder.connect_signals(Handler())
