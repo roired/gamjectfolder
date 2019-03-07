@@ -22,7 +22,7 @@
 import os
 
 filename = 'README.txt'
-# TODO: pass the email from the main app
+# this email address is here only for testing purposes
 email = 'this@test.com'
 
 # create spacer to separate sections

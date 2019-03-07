@@ -39,7 +39,7 @@ warningLabelTexts = [
 ]
 
 def clearFields():
-    print("Should reset all fields")
+    # print("Should reset all fields")
     app.object("dataPName").set_text("")
     app.object("dataSEmail").set_text("")
     # resets the parent folder to NONE
@@ -57,17 +57,17 @@ class Handler:
         # creates the folder structure if needed data is provided
         global projectData
         global warningLabelTexts
-        print("create project with params : " + projectData[0]+ projectData[1] + projectData[2]+projectData[3])
+        # print("create project with params : " + projectData[0]+ projectData[1] + projectData[2]+projectData[3])
         if projectData[0] == "":
             app.object("warningLabel").set_text(warningLabelTexts[0])
             app.object("WarningDialog").run()
             
-            print("should provide project name")
+            # print("should provide project name")
         elif projectData[3] == "":
             app.object("warningLabel").set_text(warningLabelTexts[2])
             app.object("WarningDialog").run()
             
-            print("should provide parent folder")
+            # print("should provide parent folder")
         else:
             if makefolders.CreateFolders(projectData):
                 app.object("GeneralDialog").run()
@@ -98,31 +98,31 @@ class Handler:
         global projectData
         if widget.get_active():
             projectData[2] = "True"
-            print("make README -" + projectData[3] + " - value : " + str(widget.get_active()))
+            # print("make README -" + projectData[3] + " - value : " + str(widget.get_active()))
         else:
             projectData[2] = "False"
-            print("NO readme -" + projectData[3] + " - value : " + str(widget.get_active()))
+            # print("NO readme -" + projectData[3] + " - value : " + str(widget.get_active()))
 
     def on_dataPFolder_file_set(self, widget):
         # gets parent folder where to create the skeleton
         global projectData
         separent = widget.get_filename()
         projectData[3] = separent
-        print("i have a parent folder :::: " + separent)
+        # print("i have a parent folder :::: " + separent)
 
     def on_dataSEmail_changed(self, widget):
         # gets the support email from input
         global projectData
         semail = widget.get_text()
         projectData[1] = semail
-        print("i have EMAIL > " + semail)
+        # print("i have EMAIL > " + semail)
 
     def on_dataPName_changed(self, widget):
         # gets the project name from input
         global projectData
         sename = widget.get_text()
         projectData[0] = sename
-        print("I have a NAMEEE -> -> " + sename)
+        # print("I have a NAMEEE -> -> " + sename)
 
     # AboutDialog signals
     def on_aboutClose_clicked(self, widget):
@@ -133,7 +133,7 @@ class Handler:
     def on_openFolder_clicked(self, widget):
         # opens the destination folder where the skeleton has been created
         global projectData
-        print("should open new project folder")
+        # print("should open new project folder")
         os.system("xdg-open "+ projectData[3])
         app.object("GeneralDialog").hide_on_delete()
         
