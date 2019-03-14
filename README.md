@@ -1,6 +1,8 @@
-Gamjectfolder
--------------
+# Gamjectfolder
 
+
+> WARNING: cloning this repo and opening it with Gnome Builder causes the project not to build due to wrong file permissions set by GitHub when uploading files. Once the fix is pulled I will remove this warning
+---
 
 This is a simple Python app that creates a folder strutcture as well as a default empty README.txt file for a Game Project.
 
