@@ -26,16 +26,21 @@ from typing import List
 
 from . import makefolders # import the core tasks
 
-# Data order: Project Name > Suport Email > Readme > Parent folder
-projectData = ["", "", "", ""]
+# Data order: Project Name > Suport Email > Readme > Parent folder > Mgmt File > Godot File > End-Year > End-Month > End-Day
+projectData = ["", "", "", "", "", "", "", "", ""]
 
 # sentences for the message dialog:
 # - Warning - gtk-dialog-error
 # - Project name already exists - gtk-dialog-error
-warningLabelTexts = [ 
-    "You should provide a Project NAME in order to create the folder skeleton.\n\r\n\rPlease add a name and try again.", 
+warningLabelTexts = [
+    "You should provide a Project NAME in order to create the folder skeleton.\n\r\n\rPlease add a name and try again.",
     "The project name you have chosen already exists.\n\r\n\rCan't create the folder skeleton.\n\r\n\rPlease, pick a different name and try again.",
     "You should provide a Parent Folder in order to create the folder skeleton.\n\r\n\rPlease provide a Parent Folder and try again."
+]
+
+finishedLabelTexts = [
+    "The project Skeleton has been completed.\n\r\n\rYou can check the result by clicking the \"Open Folder\" button.\n\r\n\r",
+    "\n\r\n\rIf you want to open the GODOT project in Godotengine now, you can click the \"Open Project\" button."
 ]
 
 def clearFields():
@@ -45,6 +50,11 @@ def clearFields():
     # resets the parent folder to NONE
     app.object("dataPFolder").unselect_all()
     app.object("dataRFile").set_active(False)
+    app.object("dataPMFile").set_active(False)
+    app.object("dataGodotFile").set_active(False)
+    app.object("dataEndYear").set_text("")
+    app.object("dataEndMonth").set_text("")
+    app.object("dataEndDay").set_text("")
 
 class Handler:
     # class to manage all Glade file signals
@@ -57,16 +67,17 @@ class Handler:
         # creates the folder structure if needed data is provided
         global projectData
         global warningLabelTexts
+        global finishedLabelTexts
         # print("create project with params : " + projectData[0]+ projectData[1] + projectData[2]+projectData[3])
         if projectData[0] == "":
             app.object("warningLabel").set_text(warningLabelTexts[0])
             app.object("WarningDialog").run()
-            
+
             # print("should provide project name")
         elif projectData[3] == "":
             app.object("warningLabel").set_text(warningLabelTexts[2])
             app.object("WarningDialog").run()
-            
+
             # print("should provide parent folder")
         else:
             if makefolders.CreateFolders(projectData):
@@ -103,6 +114,23 @@ class Handler:
             projectData[2] = "False"
             # print("NO readme -" + projectData[3] + " - value : " + str(widget.get_active()))
 
+    def on_dataPMFile_toggled(self, widget):
+        # checks wether to create a Project Management database file
+        global projectData
+        if widget.get_active():
+            projectData[4] = "True"
+        else:
+            projectData[4] = "False"
+
+    def on_dataGodotFile_toggled(self, widget):
+        # checks wether to create a Godot project file to be opened later
+        global projectData
+        if widget.get_active():
+            projectData[5] = "True"
+        else:
+            projectData[5] = "False"
+
+
     def on_dataPFolder_file_set(self, widget):
         # gets parent folder where to create the skeleton
         global projectData
@@ -124,6 +152,25 @@ class Handler:
         projectData[0] = sename
         # print("I have a NAMEEE -> -> " + sename)
 
+    def on_dataEndYear_changed(self, widget):
+        # gets the project estimated end year
+        global projectData
+        sendyear = widget.get_text()
+        projectData[6] = sendyear
+
+    def on_dataEndMonth_changed(self, widget):
+        # gets the project estimated end month
+        global projectData
+        sendmonth = widget.get_text()
+        projectData[7] = sendmonth
+
+    def on_dataEndDay_changed(self, widget):
+        # gets the project estimated end day
+        global projectData
+        sendday = widget.get_text()
+        projectData[8] = sendday
+
+
     # AboutDialog signals
     def on_aboutClose_clicked(self, widget):
         # hides the About Dialog when closed
@@ -136,7 +183,6 @@ class Handler:
         # print("should open new project folder")
         os.system("xdg-open "+ projectData[3])
         app.object("GeneralDialog").hide_on_delete()
-        
 
     def on_dialogClose_clicked(self, widget):
         # hides the completed dialog when closed
@@ -146,7 +192,7 @@ class Handler:
     def on_warningClose_clicked(self, widget):
         # hides the warning dialog when closed
         app.object("WarningDialog").hide_on_delete()
-    
+
 
 
 class MyApplication:
@@ -154,9 +200,12 @@ class MyApplication:
     def __init__(self):
         # initialize the app class. Gets the builder and Glade file to parse it along with the signals
         builder = Gtk.Builder()
+        # builder.add_from_file("gjfGUI.glade")
+        # commented as Gnome Builder does not like this
         # need to do as in the following lines in order to get the
         # right path to the Glade file
         filename = "/org/gnome/Gamjectfolder/gjfGUI.glade"
+
 
         # finally looks like this one is the right one
         builder.add_from_resource(filename)
@@ -176,9 +225,10 @@ class MyApplication:
     def main(self):
         Gtk.main()
 
-#def main():
+# def main():
+    # main, as to be called by gamjectfolder.in
 #    app = MyApplication()
-#    app.main()
+#    return app.main()
 
 app = MyApplication()
 app.main()    

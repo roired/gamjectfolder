@@ -130,16 +130,17 @@
               <object class="GtkFrame" id="dataFrame">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">30</property>
-                <property name="margin_right">10</property>
+                <property name="margin_left">15</property>
+                <property name="margin_right">25</property>
                 <property name="margin_top">10</property>
                 <property name="margin_bottom">10</property>
                 <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
                 <child>
                   <object class="GtkAlignment">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
+                    <property name="yalign">1</property>
                     <property name="top_padding">15</property>
                     <property name="bottom_padding">25</property>
                     <property name="left_padding">15</property>
@@ -181,7 +182,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -193,7 +194,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
-                            <property name="top_attach">2</property>
+                            <property name="top_attach">3</property>
                           </packing>
                         </child>
                         <child>
@@ -205,7 +206,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
-                            <property name="top_attach">2</property>
+                            <property name="top_attach">3</property>
                           </packing>
                         </child>
                         <child>
@@ -222,7 +223,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
-                            <property name="top_attach">3</property>
+                            <property name="top_attach">4</property>
                           </packing>
                         </child>
                         <child>
@@ -237,7 +238,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
+                            <property name="top_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -252,7 +253,7 @@
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
-                            <property name="top_attach">3</property>
+                            <property name="top_attach">4</property>
                           </packing>
                         </child>
                         <child>
@@ -267,6 +268,87 @@
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="labelEDate">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="margin_left">10</property>
+                            <property name="margin_right">10</property>
+                            <property name="margin_top">10</property>
+                            <property name="margin_bottom">10</property>
+                            <property name="label" translatable="yes">Estimated End Date: </property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <child>
+                              <object class="GtkEntry" id="dataEndYear">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="margin_left">20</property>
+                                <property name="max_length">4</property>
+                                <property name="width_chars">4</property>
+                                <property name="xalign">1</property>
+                                <property name="placeholder_text" translatable="yes">YYYY</property>
+                                <property name="input_purpose">number</property>
+                                <signal name="changed" handler="on_dataEndYear_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="dataEndMonth">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="margin_left">10</property>
+                                <property name="max_length">2</property>
+                                <property name="width_chars">2</property>
+                                <property name="xalign">1</property>
+                                <property name="placeholder_text" translatable="yes">MM</property>
+                                <property name="input_purpose">number</property>
+                                <signal name="changed" handler="on_dataEndMonth_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="dataEndDay">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="margin_left">10</property>
+                                <property name="max_length">2</property>
+                                <property name="width_chars">2</property>
+                                <property name="xalign">1</property>
+                                <property name="placeholder_text" translatable="yes">DD</property>
+                                <property name="input_purpose">number</property>
+                                <signal name="changed" handler="on_dataEndDay_changed" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
                           </packing>
                         </child>
                       </object>
@@ -292,9 +374,14 @@
               </packing>
             </child>
             <child>
+              <placeholder/>
+            </child>
+            <child>
               <object class="GtkBox" id="readmeLine">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">15</property>
+                <property name="margin_right">125</property>
                 <child>
                   <object class="GtkLabel" id="labelCReadme">
                     <property name="visible">True</property>
@@ -302,7 +389,7 @@
                     <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="margin_left">10</property>
-                    <property name="margin_right">30</property>
+                    <property name="margin_right">10</property>
                     <property name="margin_top">10</property>
                     <property name="margin_bottom">10</property>
                     <property name="label" translatable="yes">Create README.txt file:</property>
@@ -328,6 +415,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
+                    <property name="pack_type">end</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -335,13 +423,109 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="managementLine">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">15</property>
+                <property name="margin_right">125</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">10</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">Create Project Management File:</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="dataPMFile">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="halign">start</property>
+                    <property name="valign">baseline</property>
+                    <property name="use_stock">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_dataPMFile_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="pack_type">end</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="godotLine">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">15</property>
+                <property name="margin_right">125</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">10</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">Create GODOT Project File:</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="dataGodotFile">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="halign">start</property>
+                    <property name="valign">baseline</property>
+                    <property name="use_stock">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="on_dataGodotFile_toggled" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="pack_type">end</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">4</property>
               </packing>
             </child>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_left">15</property>
+                <property name="margin_top">20</property>
                 <property name="margin_bottom">30</property>
                 <child>
                   <object class="GtkLabel" id="labelPFolder">
@@ -380,7 +564,7 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">5</property>
               </packing>
             </child>
             <child>
@@ -402,7 +586,7 @@
                 <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="pack_type">end</property>
-                <property name="position">3</property>
+                <property name="position">6</property>
               </packing>
             </child>
           </object>
@@ -425,9 +609,11 @@
     <property name="deletable">False</property>
     <property name="transient_for">AppWindow</property>
     <property name="program_name">Gamjectfolder</property>
-    <property name="version">0.1</property>
+    <property name="version">0.2</property>
     <property name="comments" translatable="yes">Simple app to create a Game folder skeleton
-as well as a README.txt skeleton file</property>
+as well as a README.txt skeleton file,
+a Project Management file/database,
+and an Empty Godot Project file</property>
     <property name="website">www.roired.com</property>
     <property name="website_label" translatable="yes">ROIRED</property>
     <property name="authors">ROIRED</property>
@@ -514,6 +700,9 @@ as well as a README.txt skeleton file</property>
               </packing>
             </child>
             <child>
+              <placeholder/>
+            </child>
+            <child>
               <object class="GtkButton" id="dialogClose">
                 <property name="label">gtk-close</property>
                 <property name="visible">True</property>
@@ -526,7 +715,7 @@ as well as a README.txt skeleton file</property>
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>

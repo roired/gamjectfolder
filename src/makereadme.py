@@ -15,14 +15,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# MakeReadme.py
+# makereadme.py
 # 201901 - Roired
 # Script to create a README.txt file skeleton for game dev
 
 import os
 
 filename = 'README.txt'
-# this email address is here only for testing purposes
+# TODO: pass the email from the main app
 email = 'this@test.com'
 
 # create spacer to separate sections
@@ -53,7 +53,7 @@ def MakeIndex(fName):
 
 
 def PopulateFile(fName, eMail):
-    # jpopulate the README.txt contents according to the previous index, leaving
+    # populate the README.txt contents according to the previous index, leaving
     # enough space to fill in later
     theFile = open(fName, "w+")
     theFile.write("GAME     :\r\n")

@@ -38,4 +38,5 @@ if __name__ == '__main__':
     resource._register()
 
     from gamjectfolder import main
-    sys.exit(main.main())
+    # sys.exit(main.main())
+    sys.exit()
