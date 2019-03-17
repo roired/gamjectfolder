@@ -15,27 +15,36 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# MakeFolders.py
+# makefolders.py
 # 201901 - Roired
-# Script to create a folder structure for a Game Project
+# Script to create a folder structure for the project
 
 import os
 import datetime
 import pathlib
+import sys
+import subprocess
+
+from subprocess import Popen, PIPE
+from pathlib import Path
+from datetime import date
 
 from . import makereadme
+from . import makedbplan
+
+# import makereadme
+# import makedbplan
 
 
-# projectName = "name"
 
 # Main project Folders:
-mainFolders = ["-AuxFiles", "-Marketing", "-Builds", "-PROJECT", "-BackUPs"]
+mainFolders = ["-AuxFiles", "-Marketing", "-Builds", "-PROJECT", "-BackUPs", "-Planning"]
 subFolders = [
     ["AuxFONTS", "AuxIMAGES", "AuxMODELS",
         "AuxPACKAGES", "AuxSOUNDS", "AuxTRANSLATIONS"],
     ["MktVIDEOS", "MktLOGOS", "MktSCREENSHOTS", "MktPRESS_KIT"],
     ["Alpha", "Beta", "ReleaseCandidate"],
-    ["Proj-WIP", "Proj-FINAL"],
+    [],
     [],
     ["Trns-DEFAULT"]
 ]
@@ -50,20 +59,20 @@ def GetDate():
 
 
 def CreateFolders(pData):
-    # pData = (pName, sEmail, rEadme, pFolder):
+    # pData = (pName, sEmail, rEadme, pFolder, mAnagment, gOdot):
     # method to create the whole folder skeleton
-    # Data order: Project Name > Suport Email > Readme > Parent folder
+    # Data order: Project Name > Suport Email > Readme > Parent folder > Mgmt File > Godot File > End-Year > End-Month > End-Day
     cnt = 0
     tmpFolder = pData[3]
     parentFolder = os.chdir(tmpFolder)
     folderDate = GetDate()[1]
     folderName = (folderDate + "-" + pData[0])
 
-    #TODO: check if the folder name exists before creating it
+    #TODO: check if the folder name exists before creating it add warning
     path = pathlib.Path(folderName)
-    print(" already have it?? " + str(path.exists()))
+    # print(" already have it?? " + str(path.exists()))
     if path.exists():
-        print(" the folder is already there ... ")
+        # print(" the folder is already there ... ")
         return False
     else:
         os.mkdir(folderName)
@@ -72,12 +81,41 @@ def CreateFolders(pData):
         for folder in mainFolders:
             os.mkdir(pData[0] + folder)
             os.chdir(pData[0] + folder)
+
             if cnt == 2 and pData[2] == "True":
+                # Create the readme file if selected
                 makereadme.PopulateFile("README.txt", pData[1])
+
+
+            if cnt == 3:
+                # Create the work folders
+                CreateWorkFolders(pData[0], pData[5])
+
+            if cnt == 5 and pData[4] == "True":
+                # Create the project planning database file
+                datesList = CreateDatesList(pData)
+                makedbplan.CreatePlanDatabase(pData[0], datesList)
+
             CreateSubFolders(subFolders[cnt])
             cnt += 1
             os.chdir(baseFolder)
+
         return True
+
+def CreateWorkFolders(projName, projFile):
+    # creates the WIP folder and the final folder, and
+    # creates a GODOT project file in the WIP folder if passed
+    wipFolder = projName + "WIP"
+    finalFolder = projName + "FINAL"
+    os.mkdir(wipFolder)
+    os.mkdir(finalFolder)
+    if projFile == "True":
+        # projectFile = "project.godot"
+        os.chdir(wipFolder)
+        CreateGodotPFile(wipFolder)
+        # theFile = open(projectFile, "w+")
+        # theFile.close()
+        os.chdir("..")
 
 
 def CreateSubFolders(folderList):
@@ -87,8 +125,32 @@ def CreateSubFolders(folderList):
             os.mkdir(folder)
 
 
-#def main():
-#    CreateFolders(projectName)
+def CreateGodotPFile(projName):
+    # creates a default, empty godot project file with the project name in it
+    fileName = "project.godot"
+    theFile = open(fileName, "w+")
+    theFile.write("[application]\r\n")
+    theFile.write("\r\nconfig/name=\"{}\"".format(projName))
+    theFile.close()
+
+def CreateDatesList(projData):
+    # returns the list of data already formated, to pass to the database
+    sYear = date.today().isoformat()
+    # print("today is " + sYear)
+    eYear = date(int(projData[6]),int(projData[7]), int(projData[8])).isoformat()
+    # print("end date is " + eYear)
+    datesList = (sYear, eYear)
+    return datesList
+
+# comment next after testing until EOF
+'''
+def main():
+    projectData = ["nametest", "email@mail.emi", "True", "", "True", "True"]
+    thisFolder = os.getcwd()
+    projectData[3] = thisFolder
+    CreateFolders(projectData)
 
 
-# main()
+main()
+'''
+

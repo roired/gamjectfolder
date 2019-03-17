@@ -4,7 +4,11 @@
 > WARNING: cloning this repo and opening it with Gnome Builder causes the project not to build due to wrong file permissions set by GitHub when uploading files. Once the fix is pulled I will remove this warning
 ---
 
-This is a simple Python app that creates a folder strutcture as well as a default empty README.txt file for a Game Project.
+This is a simple Python app that creates:
+ * A folder strutcture suitable for indie game developers,
+ * (optional) A default empty README.txt file for a Game Project,
+ * (optional) A default database file to manage the project process (needs external app)
+ * (optional) An empty "project.godot" file to start a new Godotengine project
 
 Its goal is to standarize the process of starting a new Game Project by providing default folders and subfolders as well.
 
@@ -29,9 +33,12 @@ The MAIN folder is named with the creation date in ISO format followed by the na
       * MktPRESS_KIT
       * MktSCREENSHOTS
       * MktVIDEOS
+    * Name-Planning
+      * Name_plan.db
     * Name-PROJECT
       * Proj-FINAL
       * Proj-WIP
+        * project.godot
         
 It is also distributed as a flatpak file. Using the flatpak file to be installed through the Software Center. It needs to enter the password twice as this flatpak is not signed with any repo (at least just yet).
 

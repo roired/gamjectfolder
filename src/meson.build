@@ -13,7 +13,7 @@ gnome.compile_resources('gamjectfolder',
 
 python3 = import('python3')
 
-# python configuration 
+# python configuration
 conf = configuration_data()
 conf.set('PYTHON', python3.find_python().path())
 conf.set('VERSION', meson.project_version())
@@ -34,7 +34,8 @@ gamjectfolder_sources = [
   '__init__.py',
   'main.py',
   'makefolders.py',
-  'makereadme.py'
+  'makereadme.py',
+  'makedbplan.py'
 ]
 
 install_data(gamjectfolder_sources, install_dir: moduledir)
