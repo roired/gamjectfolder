@@ -10,7 +10,8 @@ This is a simple Python app that creates:
  * (optional) A default database file to manage the project process (needs external app)
  * (optional) An empty "project.godot" file to start a new Godotengine project
 
-Its goal is to standarize the process of starting a new Game Project by providing default folders and subfolders as well.
+Its goal is to automate and standardize the process of starting a new Game Project by providing default folders, subfolders, a README.txt file, a project.godot file with the project name, and a Project Tracking databse as well. All these are based on my personal needs when I face a new game project, based on my extremely short experience with game development.
+This app is PART-1. PART-2 will be the Project Tracking app.
 
 The MAIN folder is named with the creation date in ISO format followed by the name the user picks, then the structure follows:
 
@@ -46,8 +47,5 @@ While being a flatpak sandboxed app, in order to create the folder structure it 
 
 
 TODO: 
-   - Add a "estimated end date"
-   - Add a checkbox to "create project tracker" (needs Gamplan project finished)
-   - Improve Icon to match "papirus" icon theme
-   - Remove all "print" debugs
+   - Add Date verification
    - ¿Connect with Gnome Calendar and ADD start/end dates? need to study this
