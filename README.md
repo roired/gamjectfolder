@@ -48,4 +48,6 @@ While being a flatpak sandboxed app, in order to create the folder structure it 
 
 TODO: 
    - Add Date verification
+   - Add "Help" menu to explain how to use
+   - Modify titlebar to comply with Gnome standards?
    - ¿Connect with Gnome Calendar and ADD start/end dates? need to study this
